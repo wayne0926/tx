@@ -1,0 +1,259 @@
+<html lang="zh">
+
+<head>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <title>WR-在线听写助手</title>
+    <meta charset="utf8">
+    <link rel="stylesheet" type="text/css" href="button/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="button/css/vicons-font.css" />
+    <link rel="stylesheet" type="text/css" href="button/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="button/css/buttons.css" />
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.beattext.js"></script>
+    <script type="text/javascript">
+        if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i))) {    //跳到手机端
+            window.location = "phone_index.html";
+
+        }
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+    <style>
+        body {
+            font-family: helvetica, Microsoft Yahei, serif;
+            font-size: 18px;
+            background-image: url("https://t1.picb.cc/uploads/2020/05/17/kYLgET.jpg");
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .desc {
+            margin: 1% 1% 0 1%;
+            font-size: 20px;
+            color: #3F638E;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            margin-left: 1%;
+            font-size: 30px;
+            font-family: 'Microsoft Yahei', serif;
+            border-radius: 30px;
+            border: 0;
+            text-align: center;
+
+        }
+
+        #txtJSON {
+            height: 40%;
+            width: 98.5%;
+            margin: 1% 1% 1% 1%;
+            border-color: #ccc;
+            background-color: #f8f8f8;
+            line-height: 150%;
+            font-size: 18px;
+            font-family: 'Verdana', serif;
+            color: #fff;
+        }
+
+        .display {
+            margin: 1% 1% 1% 1%;
+            font-family: 'Verdana', serif;
+            color: #45A159;
+            font-weight: bold;
+        }
+
+        .meaning {
+            width: 300px;
+            height: 35%;
+            position: fixed;
+            right: 10%;
+            bottom: 15%;
+            iframe：border: none;
+            display: block;
+        }
+
+        label {
+            font-size: 20px;
+            padding-left: 10px;
+            font-family: "Microsoft Yahei", serif;
+            color: #40879B;
+            font-weight: bold;
+        }
+
+        #time {
+            width: 50px;
+        }
+
+        .beat-char {
+            line-height: 3.4em;
+            position: relative;
+            display: inline-block;
+            background: transparent;
+
+        }
+
+        .biaoti {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 15px;
+        }
+
+        .typrcolor {
+            color: #fff;
+            background: #fb6259;
+            font-family: "Microsoft Yahei", serif;
+            box-shadow: 0 10px 20px 0 #ec9c94;
+            border: 2px solid #ec9c94;
+
+        }
+
+        .srkdx {
+            width: 98%;
+            margin: auto;
+        }
+
+        .tishi {
+            font-weight: 500;
+        }
+
+        .shezhi {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../">
+        <button type="button" class="button button--isi button--border-thick button--round-l button--size-m"
+            onclick="window.location.href('../')" style="float: none;"><b>返回首页</b></button>
+    </a>
+    <div class="desc">
+        <p id="autoText" class="biaoti">使用说明：</p>
+        <p class="tishi"> 将单词按照一行一词粘贴到下面的输入框，点击“转换”，然后下方会出现转换后的单词；单击每个单词，会发出读音。</p>
+        <p class="tishi">设定间隔时间，点击“听写”，即可按时间间隔，依次读出每个单词。</p>
+    </div>
+
+    <!------输入框------->
+    <div class="srkdx" style="border-radius:15px;">
+        <label for="txtJSON"></label><textarea
+            style="background-color:#B5C8D3;color:#FFF5E8;border:6px solid rgba(208,224,233,0.4);box-shadow: 0 10px 20px 0 #D0E0E9;"
+            class="form-control" id="txtJSON" placeholder="粘贴单词到这里，加油努力奋斗吧"></textarea>
+    </div>
+
+    <!------按钮1------->
+    <div class="shezhi"><br>
+        <label for="angle-from">时间间隔：</label>
+        <label for="time"></label><input id="time" min="1"
+            style="border-radius:8px;border-style:solid;height:30px;width:60px;color:#92a5b0;font-weight:bolder;font-size:20px;background:#f0ebeb;text-align:center;"
+            type="number" value="5">
+        <br><br>
+        <label for="angle-from">英音</label>
+        <label>
+            <input name="proun" style="width:20px;height:20px;" type="radio" value="1">
+        </label>
+        <label for="angle-from">美音</label>
+        <label>
+            <input checked="true" name="proun" style="width:20px;height:20px;" type="radio" value="2">
+        </label>
+        <br><br>
+        <button id="convert" type="button"
+            class="button button--aylen button--round-l button--text-thick button--size-m button"
+            style="float: none;"><b>转 换 </b></button>
+        <button class="button button--aylen button--round-l button--text-thick button--size-m" id="dictation"
+            type="button" style="float: none;"><b>听 写 </b></button>
+    </div>
+    <br>
+    <audio id="audio" style="display:none"></audio>
+    <!------结果框------->
+    <div class="display">
+    </div>
+
+    <div class="meaning">
+        <iframe width="100%" height="100%" id="dictHcContent" frameborder="0" scrolling="no"></iframe>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+    function pronance(e) {
+        var pn = document.getElementsByName("proun");
+        var p = 1;
+        for (n = 0; n < pn.length; n++) {
+            if (pn[n].checked) {
+                p = pn[n].value;
+            }
+        }
+        var audio = $("#audio");
+        audio.attr("src", "http://dict.youdao.com/dictvoice?audio=" + $(e).attr("class") + "&type=" + p);
+        audio.get(0).play();
+
+        $("#dictHcContent").attr("src", "http://dict.cn/apis/dict3.php?q=" + $(e).attr("class"));
+
+    }
+
+
+    //转换
+    let click = $("button#convert").click(function () {
+
+        $(".display").empty();
+        var words = $('#txtJSON').val().split("\n");
+        for (i = 0; i < words.length; i++) {
+            $(".display").append("<div class='word' ><a class='" + words[i] + "' onclick='pronance(this)'>" + words[i] + "</a></div>");
+        }
+
+    });
+
+    //听写
+    $("button#dictation").click(function () {
+        var childs = $(".display").find("div > a");
+        var pn = document.getElementsByName("proun");
+        var p = 1;
+        for (n = 0; n < pn.length; n++) {
+            if (pn[n].checked) {
+                p = pn[n].value;
+            }
+        }
+        var i = 0;
+        var t = document.getElementById("time").value;
+
+        function myloop() {
+            setTimeout(function () {
+                var audio = $("#audio");
+                audio.attr("src", "http://dict.youdao.com/dictvoice?audio=" + $(childs[i]).attr("class") + "&type=" + p);
+                audio.get(0).play();
+                i++;
+                if (i < childs.length) {
+                    myloop();
+                }
+            }, 1000 * t);
+        }
+
+        myloop();
+
+
+    });
+
+</script>
+
+</html>
