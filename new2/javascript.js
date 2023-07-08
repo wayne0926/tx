@@ -3,14 +3,10 @@ function pronance(e) {
     var pn = document.getElementById("inputGroupSelect01");
     console.log(pn);
     var p = 1;
-    for (n = 0; n < pn.length; n++) {
-        if (pn[n].checked) {
-            p = pn[n].value;
-        }
-    }
+    var p = pn.value;
     console.log(p);
     var audio = $("#audio");
-    audio.attr("src", "https://dict.youdao.com/dictvoice?type=0&audio=" + $(e).attr("class") /* + "&type=" + p */);
+    audio.attr("src", "https://dict.youdao.com/dictvoice?type=0&audio=" + $(e).attr("class") + "&type=" + p);
     audio.get(0).play();
 
     $("#dictHcContent").attr("src", "https://dict.cn/apis/dict3.php?q=" + $(e).attr("class"));
@@ -41,11 +37,7 @@ function tingxie() {
     var pn = document.getElementById("inputGroupSelect01");
     console.log(pn);
     var p = 1;
-    for (n = 0; n < pn.length; n++) {
-        if (pn[n].checked) {
-            p = pn[n].value;
-        }
-    }
+    var p = pn.value;
     console.log(p);
     var i = 0;
     var t = document.getElementById("time").value;
@@ -54,7 +46,7 @@ function tingxie() {
     function myloop() {
         setTimeout(function () {
             var audio = $("#audio");
-            audio.attr("src", "https://dict.youdao.com/dictvoice?type=0&audio=" + $(childs[i]).attr("class")/*  + "&type=" + p */);
+            audio.attr("src", "https://dict.youdao.com/dictvoice?type=0&audio=" + $(childs[i]).attr("class") + "&type=" + p);
             audio.get(0).play();
             i++;
             if (i < childs.length) {
