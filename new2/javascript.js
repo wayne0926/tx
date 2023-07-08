@@ -2,11 +2,11 @@
 function pronance(e) {
     var pn = document.getElementById("inputGroupSelect01");
     console.log(pn);
-    var p = 1;
+    var p = 2;
     var p = pn.value;
     console.log(p);
     var audio = $("#audio");
-    audio.attr("src", "https://dict.youdao.com/dictvoice?type=0&audio=" + $(e).attr("class") + "&type=" + p);
+    audio.attr("src", "https://dict.youdao.com/dictvoice?audio=" + $(e).attr("class") + "&type=" + p);
     audio.get(0).play();
 
     $("#dictHcContent").attr("src", "https://dict.cn/apis/dict3.php?q=" + $(e).attr("class"));
@@ -36,7 +36,7 @@ function tingxie() {
     var childs = $(".display").find("div > a");
     var pn = document.getElementById("inputGroupSelect01");
     console.log(pn);
-    var p = 1;
+    var p = 2;
     var p = pn.value;
     console.log(p);
     var i = 0;
@@ -46,7 +46,7 @@ function tingxie() {
     function myloop() {
         setTimeout(function () {
             var audio = $("#audio");
-            audio.attr("src", "https://dict.youdao.com/dictvoice?type=0&audio=" + $(childs[i]).attr("class") + "&type=" + p);
+            audio.attr("src", "https://dict.youdao.com/dictvoice?audio=" + $(childs[i]).attr("class") + "&type=" + p);
             audio.get(0).play();
             i++;
             if (i < childs.length) {
