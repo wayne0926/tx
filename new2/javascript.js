@@ -105,7 +105,7 @@
 
 //其他
 function pronance(e) {
-    var pn = document.getElementsByName("proun");
+    var pn = document.getElementsById("inputGroupSelect01");
     var p = 1;
     for (n = 0; n < pn.length; n++) {
         if (pn[n].checked) {
@@ -144,10 +144,10 @@ function zhuanhuan() {
 }
 
 //听写
-$("button#dictation").click(function () {
+$("#dictation").click(function () {
     debugger;
     var childs = $(".display").find("div > a");
-    var pn = document.getElementsByName("proun");
+    var pn = document.getElementsById("inputGroupSelect01");
     var p = 1;
     for (n = 0; n < pn.length; n++) {
         if (pn[n].checked) {
@@ -174,18 +174,6 @@ $("button#dictation").click(function () {
 
 });
 
-//百度站长
-(function () {
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    } else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
 
 //跳转判断
 /* if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i))) { //跳到手机端
@@ -209,18 +197,3 @@ function MsgBox2() //声明标识符
 function myfunction() {
     return "确认离开当前页面吗？输入的单词将不会保存，全部丢失！";
 }
-
-//360站长
-(function () {
-    var src = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
-    document.write('<script src="' + src + '" id="sozz"><\/script>');
-})();
-
-//浏览器控制台打印信息
-console.log("如果使用中出现问题，请发邮件到：wayne0926@foxmail.com \nor \n访问：https://wr0926.ml/messageboard \n反馈 \n谢谢支持！ \n您的支持就是我最大的动力！");
-
-//浏览器控制台打印信息
-console.log("%c版本：5.33", "color:red");
-
-//浏览器控制台打印信息
-console.log("%c最近维护时间：2020，6，6，22:00", "color:red");
