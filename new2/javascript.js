@@ -105,7 +105,7 @@
 
 //其他
 function pronance(e) {
-    var pn = document.getElementsById("inputGroupSelect01");
+    var pn = document.getElementById("inputGroupSelect01");
     var p = 1;
     for (n = 0; n < pn.length; n++) {
         if (pn[n].checked) {
@@ -147,7 +147,7 @@ function zhuanhuan() {
 $("#dictation").click(function () {
     debugger;
     var childs = $(".display").find("div > a");
-    var pn = document.getElementsById("inputGroupSelect01");
+    var pn = document.getElementById("inputGroupSelect01");
     var p = 1;
     for (n = 0; n < pn.length; n++) {
         if (pn[n].checked) {
