@@ -1,10 +1,8 @@
 //其他
 function pronance(e) {
     var pn = document.getElementById("inputGroupSelect01");
-    console.log(pn);
     var p = 2;
     var p = pn.value;
-    console.log(p);
     var audio = $("#audio");
     audio.attr("src", "https://dict.youdao.com/dictvoice?audio=" + $(e).attr("class") + "&type=" + p);
     audio.get(0).play();
@@ -23,25 +21,18 @@ function zhuanhuan() {
             for (i = 0; i < words.length; i++) {
                 $(".display").append("<div class='word card bg-secondary text-white lead p-2 col' style='float:left;width:50%;'><a class='" + words[i] + "' onclick='pronance(this)' style='color:white'>" +
                     words[i] + "</a></div>");
-            // card bg-secondary text-white lead p-2 col
-            /// style='float:left;width:50%;'
         };
     }
 }
 
 //听写
 function tingxie() {
-    // debugger;
-    console.log('run');
     var childs = $(".display").find("div > a");
     var pn = document.getElementById("inputGroupSelect01");
-    console.log(pn);
     var p = 2;
     var p = pn.value;
-    console.log(p);
     var i = 0;
     var t = document.getElementById("time").value;
-    console.log(t);
 
     function myloop() {
         setTimeout(function () {
