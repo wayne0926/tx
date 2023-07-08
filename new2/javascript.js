@@ -33,7 +33,7 @@ function zhuanhuan() {
 
 //听写
 $("#dictation").click(function () {
-    debugger;
+    // debugger;
     var childs = $(".display").find("div > a");
     var pn = document.getElementById("inputGroupSelect01");
     var p = 1;
