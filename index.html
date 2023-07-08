@@ -1,41 +1,129 @@
-<!DOCTYPE html>
-<html lang="zh" xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="zh">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="时过境迁Wayne">
+    <meta name="generator" content="Jekyll v4.0.1">
     <title>在线听写助手 - WR</title>
-    <meta name="keywords" content="在线听写,单词听写,在线听写助手" />
-    <meta name="description" content="免费好用的单词在线听写助手，由@时过境迁Wayne优化维护" />
-    <script>
-        if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i))) { //跳到手机端
-            window.location = "./wap.html";
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/wayne0926/hexo-blog@gh-pages/favicon.ico" type="image/x-icon">
+    <script src="javascript.js"></script>
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/"> -->
 
-        } else {
-            //跳到电脑端
-            window.location = "./new/";
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
-        (function () {
-            var bp = document.createElement('script');
-            var curProtocol = window.location.protocol.split(':')[0];
-            if (curProtocol === 'https') {
-                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-            } else {
-                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
             }
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-        })();
-    </script>
-    <script>
-        (function () {
-            var src = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
-            document.write('<script src="' + src + '" id="sozz"><\/script>');
-        })();
-    </script>
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="starter-template.css" rel="stylesheet"> -->
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-xl">
+            <a class="navbar-brand" href="https://tx.wr0926.ml/new2/">在线听写助手</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07XL"
+                aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample07XL">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://wrans.top">主页 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://wrans.top/" tabindex="0" aria-disabled="true">博客</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                            aria-expanded="false">工具</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown07XL">
+                            <a class="dropdown-item" href="https://cd.wr0926.ml">人生倒计时</a>
+                            <a class="dropdown-item" href="https://sj.wr0926.ml">随机密码生成器</a>
+                        </div>
+                    </li>
+                </ul>
+                <!-- <form class="form-inline my-2 my-md-0">
+          <input class="form-control" type="text" placeholder="搜索" aria-label="Search">
+        </form> -->
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+        <div class="alert alert-primary alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>使用说明：</strong>
+            将单词按照一行一词粘贴到下面的输入框。点击“转换”，然后下方会出现转换后的单词；单击每个单词，会发出读音，右下角会出现释义；设定间隔时间，点击“听写”，即可按时间间隔，依次读出每个单词。
+        </div>
+        <div class="input-group flxed-left">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="txtJSON">输入单词</label>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" id="txtJSON"
+                style="max-height: 350px;min-height: 200px;" placeholder="粘贴/输入单词到这里"></textarea>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1" for="angle-from">时间间隔</span>
+            </div>
+            <input type="text" class="form-control" placeholder="设置单词朗读时间间隔" type="number" id="time" value="10" min="1">
+            <div class="input-group-prepend">
+                <span class="input-group-text">秒</span>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">朗读发音</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option value="2" type="radio" name="proun">美式发音</option>
+                    <option value="1" type="radio" name="proun">英式发音</option>
+                </select>
+                <div class="btn-group btn-group-lg text-center" role="group" style="width: 100%">
+                    <button class="btn btn-outline-primary" type="button" style="width: 50%;" id="convert"
+                        onclick="zhuanhuan()">转换</button>
+                    <button class="btn btn-primary" type="button" style="width: 50%;" id="dictation" onclick="tingxie()">听写</button>
+                </div>
+            </div>
+            <div class="display" id="display" style="width:100%">
+            </div>
+    </main><!-- /.container -->
+    <audio id="audio" style="display:none"></audio>
+    <hr>
+    <footer class="container text-center">
+        <p>Copyright © 2020-2020<a href="https://wr0926.ml">时过境迁Wayne</a></p>
+    </footer>
+
+
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/autosize@4.0.2/dist/autosize.min.js"></script>
+<script>
+    autosize(document.querySelectorAll('textarea'));
+</script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 
 </html>

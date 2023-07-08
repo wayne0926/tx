@@ -21,7 +21,7 @@ function zhuanhuan() {
             $(".display").empty();
             var words = $('#txtJSON').val().split("\n");
             for (i = 0; i < words.length; i++) {
-                $(".display").append("<div class='word card bg-secondary text-white lead p-2 col' style='float:left;width:50%;'><a class='" + words[i] + "' onclick='pronance(this)'>" +
+                $(".display").append("<div class='word card bg-secondary text-white lead p-2 col' style='float:left;width:50%;'><a class='" + words[i] + "' onclick='pronance(this)' style='color:white'>" +
                     words[i] + "</a></div>");
             // card bg-secondary text-white lead p-2 col
             /// style='float:left;width:50%;'
