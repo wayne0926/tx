@@ -34,7 +34,7 @@ function zhuanhuan() {
 }
 
 //听写
-$("#dictation").click(function () {
+function tingxie() {
     // debugger;
     console.log('run');
     var childs = $(".display").find("div > a");
@@ -66,7 +66,7 @@ $("#dictation").click(function () {
     myloop();
 
 
-});
+};
 
 //离开提示
 function myfunction() {
