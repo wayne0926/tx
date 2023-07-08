@@ -1,12 +1,14 @@
 //其他
 function pronance(e) {
     var pn = document.getElementById("inputGroupSelect01");
+    console.log(pn);
     var p = 1;
     for (n = 0; n < pn.length; n++) {
         if (pn[n].checked) {
             p = pn[n].value;
         }
     }
+    console.log(p);
     var audio = $("#audio");
     audio.attr("src", "https://dict.youdao.com/dictvoice?type=0&audio=" + $(e).attr("class") /* + "&type=" + p */);
     audio.get(0).play();
@@ -34,16 +36,20 @@ function zhuanhuan() {
 //听写
 $("#dictation").click(function () {
     // debugger;
+    console.log('run');
     var childs = $(".display").find("div > a");
     var pn = document.getElementById("inputGroupSelect01");
+    console.log(pn);
     var p = 1;
     for (n = 0; n < pn.length; n++) {
         if (pn[n].checked) {
             p = pn[n].value;
         }
     }
+    console.log(p);
     var i = 0;
     var t = document.getElementById("time").value;
+    console.log(t);
 
     function myloop() {
         setTimeout(function () {
